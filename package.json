@@ -1,0 +1,111 @@
+{
+  "name": "fe-datepicker",
+  "version": "0.0.2",
+  "description": "",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "hook": "[ -d .git ] && chmod +x .pre-commit && mkdir -p .git/hooks && ln -sf ../../.pre-commit .git/hooks/pre-commit && echo \"\\x1B[01;93mAdd git pre-commit hook successed.\\x1B[0m\" || echo \"\\x1B[31mWarning: Add git pre-commit hook failed.\\x1B[0m\"",
+    "postinstall": "npm run hook & npm run update",
+    "dev": "NODE_ENV=development start-storybook -p 9001",
+    "start": "npm run dev",
+    "clean": "rimraf lib/* || true",
+    "prebuild": "npm run clean",
+    "build:js": "babel ./src --out-dir ./lib",
+    "build:css": "stylus ./src -o ./lib",
+    "build:img": "imagemin src/* --out-dir=lib",
+    "build": "npm run build:js & npm run build:css & npm run build:img || true",
+    "prepublish": "npm run build && npm version patch -m \"bump %s\"",
+    "update": "updtr",
+    "lint": "standard | snazzy",
+    "pretest": "npm run lint",
+    "test": "true",
+    "test:watch": "npm run test -- --watch --watch-extensions jsx"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:fe-components/fe-datepicker.git"
+  },
+  "devDependencies": {
+    "@kadira/storybook": "^2.5.1",
+    "ava": "^0.16.0",
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.14.0",
+    "babel-eslint": "^6.0.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-plugin-syntax-async-functions": "^6.8.0",
+    "babel-plugin-transform-async-to-generator": "^6.8.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-es2015-node5": "^1.2.0",
+    "babel-preset-es2015-webpack2": "^1.0.0",
+    "babel-preset-node5": "^11.1.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "css-loader": "^0.24.0",
+    "enzyme": "^2.3.0",
+    "es6-promise": "^3.2.1",
+    "espower": "^1.2.1",
+    "eventsource-polyfill": "^0.9.6",
+    "exports-loader": "^0.6.3",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "html-loader": "^0.4.3",
+    "image-loader": "0.0.1",
+    "image-webpack-loader": "^2.0.0",
+    "imagemin-cli": "^3.0.0",
+    "imports-loader": "^0.6.5",
+    "jsdom": "^9.0.0",
+    "json-loader": "^0.5.4",
+    "nyc": "^8.1.0",
+    "open": "0.0.5",
+    "react-addons-test-utils": "^15.0.2",
+    "react-css-modules": "^3.7.6",
+    "react-hot-loader": "^3.0.0-beta.2",
+    "react-transform-hmr": "^1.0.4",
+    "rimraf": "^2.5.2",
+    "sinon": "^1.17.4",
+    "snazzy": "^4.0.0",
+    "standard-format": "^2.2.3",
+    "style-loader": "^0.13.1",
+    "stylint": "^1.3.10",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^2.0.0",
+    "updtr": "^0.2.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^2.1.0-beta.6",
+    "webpack-dev-server": "^2.0.0-beta"
+  },
+  "dependencies": {
+    "moment": "^2.13.0",
+    "react": "^15.0.2",
+    "react-datepicker": "^0.29.0",
+    "react-dom": "^15.0.2",
+    "whatwg-fetch": "^1.0.0"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "global": [
+      "alert",
+      "fetch"
+    ],
+    "ignore": [
+      "dist/",
+      "mock/",
+      "lib/",
+      ".storybook/"
+    ]
+  },
+  "ava": {
+    "babel": "inherit",
+    "require": [
+      "./test/helpers/setup-test-env.js"
+    ]
+  },
+  "author": "G freeman <leecade@163.com>",
+  "license": "ISC"
+}
