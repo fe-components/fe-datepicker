@@ -1,13 +1,5 @@
 {
   "presets": [
-    "es2015",
-    "es2015-webpack2",
-    "stage-0",
-    "react"
-  ],
-  "plugins": [
-    "transform-decorators-legacy",
-    "transform-async-to-generator",
-    "syntax-async-functions"
+    "fe"
   ]
 }
