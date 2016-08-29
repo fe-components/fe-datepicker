@@ -2,9 +2,9 @@
   "name": "fe-datepicker",
   "version": "0.0.2",
   "description": "",
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "files": [
-    "lib"
+    "src"
   ],
   "scripts": {
     "hook": "[ -d .git ] && chmod +x .pre-commit && mkdir -p .git/hooks && ln -sf ../../.pre-commit .git/hooks/pre-commit && echo \"\\x1B[01;93mAdd git pre-commit hook successed.\\x1B[0m\" || echo \"\\x1B[31mWarning: Add git pre-commit hook failed.\\x1B[0m\"",
