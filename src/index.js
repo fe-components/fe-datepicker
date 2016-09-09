@@ -22,7 +22,7 @@ export default class extends Component {
   }
   static defaultProps = {
     inputWidth: '200px',
-    formater: 'YYYY-MM-dd HH:mm:ss',
+    formater: 'YYYY-MM-DD HH:mm:ss',
     value: '',
     todayButton: '今日',
     clearable: true
